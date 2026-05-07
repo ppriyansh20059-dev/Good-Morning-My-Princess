@@ -12,5 +12,5 @@ closeBtn.addEventListener("click", () => {
 });
 
 loveBtn.addEventListener("click", () => {
-  alert("She is going to love this 💗");
+  alert("Hi babes hehehe here's your reminder that you're so beautiful 💗");
 });
