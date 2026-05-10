@@ -11,8 +11,8 @@ body {
   background: linear-gradient(
     135deg,
     #ffd6e8,
-    #ffe4ef,
-    #fff0f6,
+    #ffe6f2,
+    #fff0f7,
     #ffcce0
   );
   display: flex;
@@ -21,35 +21,128 @@ body {
   position: relative;
 }
 
-/* FLOWERS */
-
-body::before,
-body::after {
-  content: "🌸 🌷 🌺 🌼 💐";
-  position: absolute;
-  font-size: 2.5rem;
-  opacity: 0.18;
-  animation: floatFlowers 10s infinite alternate ease-in-out;
-  white-space: nowrap;
-}
+/* FLOWER BACKGROUND */
 
 body::before {
-  top: 8%;
-  left: -5%;
+  content:
+    "🌸 🌷 🌺 💐 🌼 🌸 🌷 🌺 💐 🌼 🌸 🌷 🌺 💐 🌼";
+  position: absolute;
+  top: 5%;
+  left: -10%;
+  width: 200%;
+  font-size: 3rem;
+  opacity: 0.22;
+  animation: floatTop 12s infinite alternate ease-in-out;
 }
 
 body::after {
-  bottom: 10%;
-  right: -5%;
+  content:
+    "💐 🌸 🌺 🌷 🌼 💗 🌸 💐 🌺 🌷 🌼 💕 🌸 🌷";
+  position: absolute;
+  bottom: 5%;
+  right: -10%;
+  width: 200%;
+  font-size: 3rem;
+  opacity: 0.22;
+  animation: floatBottom 14s infinite alternate ease-in-out;
 }
 
-@keyframes floatFlowers {
+/* EXTRA FLOWERS */
+
+.flower-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.flower-bg span {
+  position: absolute;
+  display: block;
+  font-size: 2.2rem;
+  animation: flowerRain linear infinite;
+  opacity: 0.4;
+}
+
+.flower-bg span:nth-child(1) {
+  left: 5%;
+  animation-duration: 12s;
+}
+
+.flower-bg span:nth-child(2) {
+  left: 15%;
+  animation-duration: 16s;
+}
+
+.flower-bg span:nth-child(3) {
+  left: 25%;
+  animation-duration: 14s;
+}
+
+.flower-bg span:nth-child(4) {
+  left: 35%;
+  animation-duration: 18s;
+}
+
+.flower-bg span:nth-child(5) {
+  left: 45%;
+  animation-duration: 13s;
+}
+
+.flower-bg span:nth-child(6) {
+  left: 55%;
+  animation-duration: 17s;
+}
+
+.flower-bg span:nth-child(7) {
+  left: 65%;
+  animation-duration: 15s;
+}
+
+.flower-bg span:nth-child(8) {
+  left: 75%;
+  animation-duration: 19s;
+}
+
+.flower-bg span:nth-child(9) {
+  left: 85%;
+  animation-duration: 14s;
+}
+
+.flower-bg span:nth-child(10) {
+  left: 95%;
+  animation-duration: 16s;
+}
+
+@keyframes flowerRain {
+  0% {
+    top: -10%;
+    transform: rotate(0deg);
+  }
+
+  100% {
+    top: 110%;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes floatTop {
   from {
-    transform: translateY(0px) rotate(-2deg);
+    transform: translateY(0px);
   }
 
   to {
-    transform: translateY(-25px) rotate(2deg);
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes floatBottom {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(20px);
   }
 }
 
@@ -58,33 +151,31 @@ body::after {
 .container {
   text-align: center;
   z-index: 2;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.55);
   padding: 55px 40px;
   border-radius: 35px;
   box-shadow: 0 15px 45px rgba(255, 105, 180, 0.35);
   backdrop-filter: blur(14px);
-  border: 3px solid rgba(255, 255, 255, 0.4);
+  border: 3px solid rgba(255, 255, 255, 0.5);
   width: 90%;
   max-width: 650px;
   position: relative;
 }
 
-/* LITTLE HEARTS */
-
 .container::before {
-  content: "💗";
+  content: "🌸";
   position: absolute;
-  top: -18px;
+  top: -20px;
   left: 25px;
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
 .container::after {
-  content: "🌸";
+  content: "💐";
   position: absolute;
-  bottom: -18px;
+  bottom: -20px;
   right: 25px;
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
 /* TYPING TEXT */
@@ -101,6 +192,7 @@ body::after {
     blink 0.8s infinite;
   margin-bottom: 20px;
   font-weight: 700;
+  text-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
 }
 
 @keyframes typing {
@@ -119,12 +211,12 @@ body::after {
   }
 }
 
-/* SUBTEXT */
+/* SUBTITLE */
 
 .subtitle {
   color: #b84d7d;
   margin-bottom: 35px;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 500;
 }
 
@@ -134,18 +226,26 @@ button {
   border: none;
   padding: 16px 28px;
   border-radius: 35px;
-  background: linear-gradient(135deg, #ff69b4, #ff8fc7);
+  background: linear-gradient(
+    135deg,
+    #ff69b4,
+    #ff8fc7
+  );
   color: white;
   font-size: 1rem;
   cursor: pointer;
-  box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4);
+  box-shadow: 0 10px 25px rgba(255, 105, 180, 0.45);
   transition: all 0.3s ease;
   font-weight: 600;
 }
 
 button:hover {
   transform: scale(1.08);
-  background: linear-gradient(135deg, #ff4fa3, #ff75ba);
+  background: linear-gradient(
+    135deg,
+    #ff4fa3,
+    #ff75ba
+  );
 }
 
 /* POPUP */
@@ -156,7 +256,7 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 192, 203, 0.5);
+  background: rgba(255, 192, 203, 0.55);
   display: none;
   justify-content: center;
   align-items: center;
@@ -184,19 +284,19 @@ button:hover {
 }
 
 .popup-box::before {
-  content: "🌸";
+  content: "🌸 🌷 💐";
   position: absolute;
   top: 15px;
   left: 20px;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 
 .popup-box::after {
-  content: "💐";
+  content: "💗 🌺 🌸";
   position: absolute;
   bottom: 15px;
   right: 20px;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 
 @keyframes popUp {
@@ -210,8 +310,6 @@ button:hover {
     opacity: 1;
   }
 }
-
-/* POPUP TEXT */
 
 .popup-box h2 {
   color: #d63384;
@@ -235,11 +333,6 @@ button:hover {
   font-size: 30px;
   color: #d63384;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-#closeBtn:hover {
-  transform: scale(1.2);
 }
 
 /* LOVE BUTTON */
@@ -267,12 +360,8 @@ button:hover {
     padding: 30px 20px;
   }
 
-  .popup-box h2 {
-    font-size: 1.5rem;
-  }
-
   body::before,
   body::after {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 }
