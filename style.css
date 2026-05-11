@@ -8,198 +8,59 @@
 body {
   min-height: 100vh;
   overflow: hidden;
-  background: linear-gradient(
-    135deg,
-    #ffd6e8,
-    #ffe6f2,
-    #fff0f7,
-    #ffcce0
-  );
+  background: linear-gradient(135deg, #ffd6e8, #ffeaf4, #ffc2dc);
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
 }
-
-/* FLOWER BACKGROUND */
-
-body::before {
-  content:
-    "🌸 🌷 🌺 💐 🌼 🌸 🌷 🌺 💐 🌼 🌸 🌷 🌺 💐 🌼";
-  position: absolute;
-  top: 5%;
-  left: -10%;
-  width: 200%;
-  font-size: 3rem;
-  opacity: 0.22;
-  animation: floatTop 12s infinite alternate ease-in-out;
-}
-
-body::after {
-  content:
-    "💐 🌸 🌺 🌷 🌼 💗 🌸 💐 🌺 🌷 🌼 💕 🌸 🌷";
-  position: absolute;
-  bottom: 5%;
-  right: -10%;
-  width: 200%;
-  font-size: 3rem;
-  opacity: 0.22;
-  animation: floatBottom 14s infinite alternate ease-in-out;
-}
-
-/* EXTRA FLOWERS */
 
 .flower-bg {
   position: absolute;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  background-image:
+    radial-gradient(circle at 20% 20%, #ff8fc7 0 12px, transparent 13px),
+    radial-gradient(circle at 80% 30%, #ffb6d9 0 15px, transparent 16px),
+    radial-gradient(circle at 30% 80%, #ff99cc 0 14px, transparent 15px),
+    radial-gradient(circle at 70% 75%, #ff7ebc 0 11px, transparent 12px);
+  opacity: 0.45;
+  animation: floatFlowers 8s infinite alternate ease-in-out;
 }
 
-.flower-bg span {
-  position: absolute;
-  display: block;
-  font-size: 2.2rem;
-  animation: flowerRain linear infinite;
-  opacity: 0.4;
-}
-
-.flower-bg span:nth-child(1) {
-  left: 5%;
-  animation-duration: 12s;
-}
-
-.flower-bg span:nth-child(2) {
-  left: 15%;
-  animation-duration: 16s;
-}
-
-.flower-bg span:nth-child(3) {
-  left: 25%;
-  animation-duration: 14s;
-}
-
-.flower-bg span:nth-child(4) {
-  left: 35%;
-  animation-duration: 18s;
-}
-
-.flower-bg span:nth-child(5) {
-  left: 45%;
-  animation-duration: 13s;
-}
-
-.flower-bg span:nth-child(6) {
-  left: 55%;
-  animation-duration: 17s;
-}
-
-.flower-bg span:nth-child(7) {
-  left: 65%;
-  animation-duration: 15s;
-}
-
-.flower-bg span:nth-child(8) {
-  left: 75%;
-  animation-duration: 19s;
-}
-
-.flower-bg span:nth-child(9) {
-  left: 85%;
-  animation-duration: 14s;
-}
-
-.flower-bg span:nth-child(10) {
-  left: 95%;
-  animation-duration: 16s;
-}
-
-@keyframes flowerRain {
-  0% {
-    top: -10%;
-    transform: rotate(0deg);
-  }
-
-  100% {
-    top: 110%;
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes floatTop {
+@keyframes floatFlowers {
   from {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
-
   to {
-    transform: translateY(-20px);
+    transform: translateY(-25px);
   }
 }
-
-@keyframes floatBottom {
-  from {
-    transform: translateY(0px);
-  }
-
-  to {
-    transform: translateY(20px);
-  }
-}
-
-/* MAIN CARD */
 
 .container {
   text-align: center;
   z-index: 2;
   background: rgba(255, 255, 255, 0.55);
-  padding: 55px 40px;
-  border-radius: 35px;
-  box-shadow: 0 15px 45px rgba(255, 105, 180, 0.35);
-  backdrop-filter: blur(14px);
-  border: 3px solid rgba(255, 255, 255, 0.5);
-  width: 90%;
-  max-width: 650px;
-  position: relative;
+  padding: 50px 35px;
+  border-radius: 30px;
+  box-shadow: 0 15px 40px rgba(255, 105, 180, 0.35);
+  backdrop-filter: blur(10px);
 }
-
-.container::before {
-  content: "🌸";
-  position: absolute;
-  top: -20px;
-  left: 25px;
-  font-size: 2.5rem;
-}
-
-.container::after {
-  content: "💐";
-  position: absolute;
-  bottom: -20px;
-  right: 25px;
-  font-size: 2.5rem;
-}
-
-/* TYPING TEXT */
 
 .typing {
   color: #d63384;
-  font-size: 2.7rem;
+  font-size: 2.4rem;
   white-space: nowrap;
   overflow: hidden;
-  border-right: 4px solid #d63384;
+  border-right: 3px solid #d63384;
   width: 0;
-  animation:
-    typing 3s steps(30, end) forwards,
-    blink 0.8s infinite;
-  margin-bottom: 20px;
-  font-weight: 700;
-  text-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+  animation: typing 3s steps(25, end) forwards, blink 0.8s infinite;
+  margin-bottom: 35px;
 }
 
 @keyframes typing {
   from {
     width: 0;
   }
-
   to {
     width: 100%;
   }
@@ -211,44 +72,22 @@ body::after {
   }
 }
 
-/* SUBTITLE */
-
-.subtitle {
-  color: #b84d7d;
-  margin-bottom: 35px;
-  font-size: 1.15rem;
-  font-weight: 500;
-}
-
-/* BUTTON */
-
 button {
   border: none;
-  padding: 16px 28px;
-  border-radius: 35px;
-  background: linear-gradient(
-    135deg,
-    #ff69b4,
-    #ff8fc7
-  );
+  padding: 15px 25px;
+  border-radius: 30px;
+  background: #ff69b4;
   color: white;
   font-size: 1rem;
   cursor: pointer;
-  box-shadow: 0 10px 25px rgba(255, 105, 180, 0.45);
-  transition: all 0.3s ease;
-  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.45);
+  transition: 0.3s;
 }
 
 button:hover {
+  background: #ff4fa3;
   transform: scale(1.08);
-  background: linear-gradient(
-    135deg,
-    #ff4fa3,
-    #ff75ba
-  );
 }
-
-/* POPUP */
 
 .popup {
   position: fixed;
@@ -256,47 +95,24 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 192, 203, 0.55);
+  background: rgba(255, 182, 213, 0.6);
   display: none;
   justify-content: center;
   align-items: center;
   z-index: 5;
-  padding: 20px;
 }
 
-/* POPUP BOX */
-
 .popup-box {
-  background: linear-gradient(
-    180deg,
-    #fff0f7,
-    #ffe4ef
-  );
-  width: 100%;
-  max-width: 550px;
-  padding: 40px;
-  border-radius: 35px;
+  background: #fff0f7;
+  width: 90%;
+  max-width: 500px;
+  padding: 35px;
+  border-radius: 30px;
   text-align: center;
-  box-shadow: 0 15px 50px rgba(214, 51, 132, 0.35);
+  box-shadow: 0 15px 50px rgba(214, 51, 132, 0.4);
   animation: popUp 0.5s ease;
   position: relative;
   border: 3px solid #ffb6d9;
-}
-
-.popup-box::before {
-  content: "🌸 🌷 💐";
-  position: absolute;
-  top: 15px;
-  left: 20px;
-  font-size: 1.5rem;
-}
-
-.popup-box::after {
-  content: "💗 🌺 🌸";
-  position: absolute;
-  bottom: 15px;
-  right: 20px;
-  font-size: 1.5rem;
 }
 
 @keyframes popUp {
@@ -304,7 +120,6 @@ button:hover {
     transform: scale(0.6);
     opacity: 0;
   }
-
   to {
     transform: scale(1);
     opacity: 1;
@@ -314,54 +129,40 @@ button:hover {
 .popup-box h2 {
   color: #d63384;
   margin-bottom: 20px;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .popup-box p {
   color: #7a2c55;
-  font-size: 1.05rem;
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.7;
   margin-bottom: 25px;
 }
 
-/* CLOSE BUTTON */
-
 #closeBtn {
   position: absolute;
-  top: 12px;
-  right: 20px;
-  font-size: 30px;
+  top: 15px;
+  right: 22px;
+  font-size: 28px;
   color: #d63384;
   cursor: pointer;
 }
 
-/* LOVE BUTTON */
-
 #loveBtn {
-  background: linear-gradient(
-    135deg,
-    #ff85c1,
-    #ff69b4
-  );
+  background: #ff85c1;
 }
-
-/* MOBILE */
 
 @media (max-width: 600px) {
   .typing {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
   }
 
   .container {
-    padding: 40px 25px;
+    width: 90%;
+    padding: 40px 20px;
   }
 
   .popup-box {
     padding: 30px 20px;
-  }
-
-  body::before,
-  body::after {
-    font-size: 2rem;
   }
 }
