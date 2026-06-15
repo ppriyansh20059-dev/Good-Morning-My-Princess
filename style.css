@@ -7,71 +7,187 @@
 
 body {
   min-height: 100vh;
-  overflow: hidden;
-  background: linear-gradient(
-    135deg,
-    #ffd6e8,
-    #ffeaf4,
-    #fff4fa,
-    #ffcce0
-  );
+  overflow-x: hidden;
+
+  background:
+    radial-gradient(circle at top left, #ffb6d9 0%, transparent 30%),
+    radial-gradient(circle at bottom right, #ffcce5 0%, transparent 30%),
+    linear-gradient(135deg, #fff0f7, #ffd6e8, #ffeaf4);
 
   display: flex;
   justify-content: center;
   align-items: center;
+
   position: relative;
+
+  animation: backgroundMove 12s ease infinite;
 }
 
-/* FLOATING ITEMS */
+/* ANIMATED BACKGROUND */
+
+@keyframes backgroundMove {
+  0% {
+    background-position: left top, right bottom, center;
+  }
+
+  50% {
+    background-position: right top, left bottom, center;
+  }
+
+  100% {
+    background-position: left top, right bottom, center;
+  }
+}
+
+/* FLOATING GLOW BLOBS */
+
+body::before,
+body::after {
+  content: "";
+
+  position: absolute;
+
+  width: 350px;
+  height: 350px;
+
+  border-radius: 50%;
+
+  filter: blur(80px);
+
+  opacity: 0.4;
+
+  z-index: 0;
+}
+
+body::before {
+  background: #ff9ac7;
+
+  top: -100px;
+  left: -100px;
+
+  animation: blob1 10s infinite alternate ease-in-out;
+}
+
+body::after {
+  background: #ffc2dc;
+
+  bottom: -100px;
+  right: -100px;
+
+  animation: blob2 12s infinite alternate ease-in-out;
+}
+
+@keyframes blob1 {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(40px);
+  }
+}
+
+@keyframes blob2 {
+  from {
+    transform: translateX(0px);
+  }
+
+  to {
+    transform: translateX(-40px);
+  }
+}
+
+/* FLOWERS */
 
 .flower-bg {
   position: absolute;
   width: 100%;
   height: 100%;
   overflow: hidden;
+  z-index: 0;
 }
 
 .flower-bg span {
   position: absolute;
-  font-size: 2.2rem;
-  opacity: 0.35;
-  animation: float 15s linear infinite;
+  font-size: 2rem;
+  opacity: 0.3;
+
+  animation: floatFlower linear infinite;
 }
 
-/* RANDOM POSITIONS */
+/* RANDOM FLOWER POSITIONS */
 
-.flower-bg span:nth-child(1) { top: 5%; left: 8%; }
-.flower-bg span:nth-child(2) { top: 12%; left: 25%; }
-.flower-bg span:nth-child(3) { top: 20%; left: 45%; }
-.flower-bg span:nth-child(4) { top: 8%; left: 70%; }
-.flower-bg span:nth-child(5) { top: 25%; left: 85%; }
-.flower-bg span:nth-child(6) { top: 40%; left: 15%; }
-.flower-bg span:nth-child(7) { top: 48%; left: 35%; }
-.flower-bg span:nth-child(8) { top: 55%; left: 60%; }
-.flower-bg span:nth-child(9) { top: 42%; left: 82%; }
-.flower-bg span:nth-child(10) { top: 70%; left: 10%; }
-.flower-bg span:nth-child(11) { top: 78%; left: 28%; }
-.flower-bg span:nth-child(12) { top: 85%; left: 50%; }
-.flower-bg span:nth-child(13) { top: 75%; left: 72%; }
-.flower-bg span:nth-child(14) { top: 88%; left: 88%; }
-.flower-bg span:nth-child(15) { top: 32%; left: 55%; }
-.flower-bg span:nth-child(16) { top: 62%; left: 48%; }
-.flower-bg span:nth-child(17) { top: 18%; left: 60%; }
-.flower-bg span:nth-child(18) { top: 52%; left: 5%; }
-.flower-bg span:nth-child(19) { top: 92%; left: 65%; }
-.flower-bg span:nth-child(20) { top: 30%; left: 92%; }
+.flower-bg span:nth-child(1) {
+  top: 10%;
+  left: 10%;
+  animation-duration: 14s;
+}
 
-@keyframes float {
+.flower-bg span:nth-child(2) {
+  top: 25%;
+  left: 80%;
+  animation-duration: 16s;
+}
+
+.flower-bg span:nth-child(3) {
+  top: 50%;
+  left: 15%;
+  animation-duration: 12s;
+}
+
+.flower-bg span:nth-child(4) {
+  top: 70%;
+  left: 75%;
+  animation-duration: 18s;
+}
+
+.flower-bg span:nth-child(5) {
+  top: 85%;
+  left: 30%;
+  animation-duration: 15s;
+}
+
+.flower-bg span:nth-child(6) {
+  top: 35%;
+  left: 55%;
+  animation-duration: 17s;
+}
+
+.flower-bg span:nth-child(7) {
+  top: 5%;
+  left: 60%;
+  animation-duration: 13s;
+}
+
+.flower-bg span:nth-child(8) {
+  top: 60%;
+  left: 90%;
+  animation-duration: 16s;
+}
+
+.flower-bg span:nth-child(9) {
+  top: 78%;
+  left: 50%;
+  animation-duration: 14s;
+}
+
+.flower-bg span:nth-child(10) {
+  top: 40%;
+  left: 5%;
+  animation-duration: 19s;
+}
+
+@keyframes floatFlower {
   0% {
     transform: translateY(0px) rotate(0deg);
   }
 
   50% {
-    transform: translateY(-20px) rotate(10deg);
+    transform: translateY(-20px) rotate(8deg);
   }
 
   100% {
-    transform: translateY(0px) rotate(-10deg);
+    transform: translateY(0px) rotate(-8deg);
   }
 }
 
@@ -84,43 +200,44 @@ body {
   width: 90%;
   max-width: 700px;
 
-  padding: 60px 40px;
+  padding: 60px 45px;
 
   border-radius: 35px;
 
-  background: rgba(255,255,255,0.55);
+  background: rgba(255, 255, 255, 0.35);
 
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(18px);
 
-  border: 3px solid rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.4);
 
   text-align: center;
 
   box-shadow:
-    0 15px 40px rgba(255,105,180,0.35),
-    0 0 30px rgba(255,182,193,0.25);
+    0 15px 40px rgba(255, 105, 180, 0.18),
+    0 0 40px rgba(255, 182, 193, 0.2);
 }
 
-/* GRAD CAP */
+/* HEART ICON */
 
-.graduation-cap {
-  font-size: 4rem;
-  margin-bottom: 15px;
-  animation: bounce 2s infinite;
+.container::before {
+  content: "💗";
+
+  position: absolute;
+
+  top: -18px;
+  left: 30px;
+
+  font-size: 2rem;
 }
 
-@keyframes bounce {
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-/* TYPING */
+/* MAIN TEXT */
 
 .typing {
   color: #d63384;
 
-  font-size: 2.8rem;
+  font-size: 3rem;
+
+  font-weight: 700;
 
   overflow: hidden;
 
@@ -135,6 +252,8 @@ body {
   animation:
     typing 3s steps(30, end) forwards,
     blink .8s infinite;
+
+  text-shadow: 0 0 15px rgba(255,105,180,0.2);
 }
 
 @keyframes typing {
@@ -158,39 +277,11 @@ body {
 .subtitle {
   color: #b84d7d;
 
-  font-size: 1.2rem;
+  font-size: 1.15rem;
 
-  line-height: 1.8;
+  line-height: 1.9;
 
-  margin-bottom: 30px;
-}
-
-/* PHOTO FRAME */
-
-.photo-frame {
-  margin: 0 auto 35px;
-
-  width: 260px;
-  height: 70px;
-
-  border-radius: 25px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: linear-gradient(
-    135deg,
-    #ffb6d9,
-    #ffd6e8
-  );
-
-  color: white;
-
-  font-weight: 600;
-
-  box-shadow:
-    0 10px 25px rgba(255,105,180,0.35);
+  margin-bottom: 35px;
 }
 
 /* BUTTON */
@@ -200,7 +291,7 @@ button {
 
   padding: 18px 30px;
 
-  border-radius: 40px;
+  border-radius: 50px;
 
   background: linear-gradient(
     135deg,
@@ -216,14 +307,16 @@ button {
 
   cursor: pointer;
 
-  transition: 0.3s;
+  transition: 0.3s ease;
 
   box-shadow:
-    0 10px 25px rgba(255,105,180,0.4);
+    0 10px 25px rgba(255,105,180,0.35);
 }
 
 button:hover {
   transform: scale(1.08);
+  box-shadow:
+    0 15px 35px rgba(255,105,180,0.45);
 }
 
 /* POPUP */
@@ -237,7 +330,9 @@ button:hover {
   width: 100%;
   height: 100%;
 
-  background: rgba(255,192,203,0.5);
+  background: rgba(255, 192, 203, 0.3);
+
+  backdrop-filter: blur(6px);
 
   display: none;
 
@@ -261,46 +356,44 @@ button:hover {
 
   border-radius: 35px;
 
-  background: linear-gradient(
-    180deg,
-    #fff0f7,
-    #ffe4ef
-  );
+  background: rgba(255,255,255,0.8);
+
+  backdrop-filter: blur(15px);
 
   text-align: center;
 
-  border: 3px solid #ffb6d9;
+  border: 1px solid rgba(255,255,255,0.5);
 
   animation: popupAnim .5s ease;
 
   box-shadow:
-    0 15px 50px rgba(214,51,132,0.35);
+    0 20px 50px rgba(214,51,132,0.2);
 }
 
 @keyframes popupAnim {
   from {
+    transform: scale(.7);
     opacity: 0;
-    transform: scale(.6);
   }
 
   to {
-    opacity: 1;
     transform: scale(1);
+    opacity: 1;
   }
 }
 
 .popup-box h2 {
   color: #d63384;
 
-  margin-bottom: 25px;
-
   font-size: 2rem;
+
+  margin-bottom: 25px;
 }
 
 .popup-box p {
   color: #7a2c55;
 
-  line-height: 1.9;
+  line-height: 2;
 
   font-size: 1.05rem;
 
@@ -322,34 +415,49 @@ button:hover {
   color: #d63384;
 }
 
-/* SECOND BUTTON */
-
-#loveBtn {
-  background: linear-gradient(
-    135deg,
-    #ff85c1,
-    #ff69b4
-  );
-}
-
 /* MOBILE */
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+
+  .container {
+    padding: 45px 25px;
+  }
 
   .typing {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .subtitle {
     font-size: 1rem;
   }
 
-  .container {
-    padding: 45px 25px;
-  }
-
   .popup-box {
     padding: 30px 22px;
+  }
+
+  .popup-box h2 {
+    font-size: 1.5rem;
+  }
+
+  .popup-box p {
+    font-size: .95rem;
+  }
+
+  .flower-bg span {
+    font-size: 1.5rem;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .typing {
+    font-size: 1.6rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 16px;
   }
 
 }
