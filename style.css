@@ -1,463 +1,311 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  min-height: 100vh;
-  overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
 
-  background:
-    radial-gradient(circle at top left, #ffb6d9 0%, transparent 30%),
-    radial-gradient(circle at bottom right, #ffcce5 0%, transparent 30%),
-    linear-gradient(135deg, #fff0f7, #ffd6e8, #ffeaf4);
+    background: linear-gradient(
+        -45deg,
+        #ffd6e8,
+        #ffe5f1,
+        #fff1f7,
+        #ffc7dd
+    );
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    background-size: 400% 400%;
 
-  position: relative;
-
-  animation: backgroundMove 12s ease infinite;
+    animation: skyGradient 15s ease infinite;
 }
 
-/* ANIMATED BACKGROUND */
-
-@keyframes backgroundMove {
-  0% {
-    background-position: left top, right bottom, center;
-  }
-
-  50% {
-    background-position: right top, left bottom, center;
-  }
-
-  100% {
-    background-position: left top, right bottom, center;
-  }
+@keyframes skyGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
-/* FLOATING GLOW BLOBS */
+/* Floating Clouds */
 
 body::before,
 body::after {
-  content: "";
-
-  position: absolute;
-
-  width: 350px;
-  height: 350px;
-
-  border-radius: 50%;
-
-  filter: blur(80px);
-
-  opacity: 0.4;
-
-  z-index: 0;
+    content: "☁️";
+    position: absolute;
+    font-size: 6rem;
+    opacity: .35;
+    animation: cloudFloat 25s linear infinite;
 }
 
 body::before {
-  background: #ff9ac7;
-
-  top: -100px;
-  left: -100px;
-
-  animation: blob1 10s infinite alternate ease-in-out;
+    top: 15%;
+    left: -10%;
 }
 
 body::after {
-  background: #ffc2dc;
-
-  bottom: -100px;
-  right: -100px;
-
-  animation: blob2 12s infinite alternate ease-in-out;
+    top: 65%;
+    right: -10%;
+    animation-duration: 35s;
 }
 
-@keyframes blob1 {
-  from {
-    transform: translateY(0px);
-  }
+@keyframes cloudFloat {
+    from {
+        transform: translateX(0);
+    }
 
-  to {
-    transform: translateY(40px);
-  }
+    to {
+        transform: translateX(140vw);
+    }
 }
 
-@keyframes blob2 {
-  from {
-    transform: translateX(0px);
-  }
-
-  to {
-    transform: translateX(-40px);
-  }
-}
-
-/* FLOWERS */
+/* Decorative Hearts */
 
 .flower-bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 }
 
 .flower-bg span {
-  position: absolute;
-  font-size: 2rem;
-  opacity: 0.3;
-
-  animation: floatFlower linear infinite;
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: .25;
+    animation: floatUp 12s linear infinite;
 }
 
-/* RANDOM FLOWER POSITIONS */
+.flower-bg span:nth-child(1){left:10%;top:90%;}
+.flower-bg span:nth-child(2){left:25%;top:80%;}
+.flower-bg span:nth-child(3){left:45%;top:95%;}
+.flower-bg span:nth-child(4){left:65%;top:85%;}
+.flower-bg span:nth-child(5){left:85%;top:90%;}
+.flower-bg span:nth-child(6){left:15%;top:70%;}
+.flower-bg span:nth-child(7){left:75%;top:75%;}
 
-.flower-bg span:nth-child(1) {
-  top: 10%;
-  left: 10%;
-  animation-duration: 14s;
+@keyframes floatUp {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-25px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }
 
-.flower-bg span:nth-child(2) {
-  top: 25%;
-  left: 80%;
-  animation-duration: 16s;
-}
-
-.flower-bg span:nth-child(3) {
-  top: 50%;
-  left: 15%;
-  animation-duration: 12s;
-}
-
-.flower-bg span:nth-child(4) {
-  top: 70%;
-  left: 75%;
-  animation-duration: 18s;
-}
-
-.flower-bg span:nth-child(5) {
-  top: 85%;
-  left: 30%;
-  animation-duration: 15s;
-}
-
-.flower-bg span:nth-child(6) {
-  top: 35%;
-  left: 55%;
-  animation-duration: 17s;
-}
-
-.flower-bg span:nth-child(7) {
-  top: 5%;
-  left: 60%;
-  animation-duration: 13s;
-}
-
-.flower-bg span:nth-child(8) {
-  top: 60%;
-  left: 90%;
-  animation-duration: 16s;
-}
-
-.flower-bg span:nth-child(9) {
-  top: 78%;
-  left: 50%;
-  animation-duration: 14s;
-}
-
-.flower-bg span:nth-child(10) {
-  top: 40%;
-  left: 5%;
-  animation-duration: 19s;
-}
-
-@keyframes floatFlower {
-  0% {
-    transform: translateY(0px) rotate(0deg);
-  }
-
-  50% {
-    transform: translateY(-20px) rotate(8deg);
-  }
-
-  100% {
-    transform: translateY(0px) rotate(-8deg);
-  }
-}
-
-/* MAIN CARD */
+/* Main Card */
 
 .container {
-  position: relative;
-  z-index: 2;
+    width: 90%;
+    max-width: 700px;
 
-  width: 90%;
-  max-width: 700px;
+    padding: 50px;
 
-  padding: 60px 45px;
+    text-align: center;
 
-  border-radius: 35px;
+    background: rgba(255,255,255,.35);
 
-  background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(18px);
 
-  backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,.4);
 
-  border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 35px;
 
-  text-align: center;
+    box-shadow:
+        0 20px 40px rgba(255,105,180,.15),
+        0 0 50px rgba(255,255,255,.25);
 
-  box-shadow:
-    0 15px 40px rgba(255, 105, 180, 0.18),
-    0 0 40px rgba(255, 182, 193, 0.2);
+    position: relative;
+    z-index: 10;
 }
 
-/* HEART ICON */
-
-.container::before {
-  content: "💗";
-
-  position: absolute;
-
-  top: -18px;
-  left: 30px;
-
-  font-size: 2rem;
-}
-
-/* MAIN TEXT */
+/* Typing Text */
 
 .typing {
-  color: #d63384;
+    color: #d63384;
 
-  font-size: 3rem;
+    font-size: 3rem;
+    font-weight: 700;
 
-  font-weight: 700;
+    overflow: hidden;
+    white-space: nowrap;
 
-  overflow: hidden;
+    border-right: 3px solid #d63384;
 
-  white-space: nowrap;
+    width: 0;
 
-  border-right: 4px solid #d63384;
+    margin: 0 auto 25px;
 
-  width: 0;
-
-  margin: 0 auto 20px;
-
-  animation:
-    typing 3s steps(30, end) forwards,
-    blink .8s infinite;
-
-  text-shadow: 0 0 15px rgba(255,105,180,0.2);
+    animation:
+        typing 3s steps(30,end) forwards,
+        blink .8s infinite;
 }
 
 @keyframes typing {
-  from {
-    width: 0;
-  }
+    from {
+        width: 0;
+    }
 
-  to {
-    width: 100%;
-  }
+    to {
+        width: 100%;
+    }
 }
 
 @keyframes blink {
-  50% {
-    border-color: transparent;
-  }
+    50% {
+        border-color: transparent;
+    }
 }
 
-/* SUBTITLE */
+/* Subtitle */
 
 .subtitle {
-  color: #b84d7d;
-
-  font-size: 1.15rem;
-
-  line-height: 1.9;
-
-  margin-bottom: 35px;
+    color: #a54f74;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    line-height: 1.8;
 }
 
-/* BUTTON */
+/* Buttons */
 
 button {
-  border: none;
+    border: none;
 
-  padding: 18px 30px;
+    padding: 16px 28px;
 
-  border-radius: 50px;
+    border-radius: 50px;
 
-  background: linear-gradient(
-    135deg,
-    #ff69b4,
-    #ff8fc7
-  );
+    background: linear-gradient(
+        135deg,
+        #ff69b4,
+        #ff95c8
+    );
 
-  color: white;
+    color: white;
 
-  font-size: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
 
-  font-weight: 600;
+    cursor: pointer;
 
-  cursor: pointer;
+    transition: .3s;
 
-  transition: 0.3s ease;
-
-  box-shadow:
-    0 10px 25px rgba(255,105,180,0.35);
+    box-shadow:
+        0 10px 25px rgba(255,105,180,.25);
 }
 
 button:hover {
-  transform: scale(1.08);
-  box-shadow:
-    0 15px 35px rgba(255,105,180,0.45);
+    transform: translateY(-3px) scale(1.03);
 }
 
-/* POPUP */
+/* Popup */
 
 .popup {
-  position: fixed;
+    display: none;
 
-  top: 0;
-  left: 0;
+    position: fixed;
 
-  width: 100%;
-  height: 100%;
+    top: 0;
+    left: 0;
 
-  background: rgba(255, 192, 203, 0.3);
+    width: 100%;
+    height: 100%;
 
-  backdrop-filter: blur(6px);
+    background: rgba(255,192,203,.25);
 
-  display: none;
+    backdrop-filter: blur(5px);
 
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
 
-  z-index: 10;
-
-  padding: 20px;
+    z-index: 999;
 }
 
-/* POPUP BOX */
+/* Popup Box */
 
 .popup-box {
-  position: relative;
+    width: 90%;
+    max-width: 550px;
 
-  width: 100%;
-  max-width: 600px;
+    background: rgba(255,255,255,.9);
 
-  padding: 45px;
+    padding: 40px;
 
-  border-radius: 35px;
+    border-radius: 30px;
 
-  background: rgba(255,255,255,0.8);
+    text-align: center;
 
-  backdrop-filter: blur(15px);
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.1);
 
-  text-align: center;
-
-  border: 1px solid rgba(255,255,255,0.5);
-
-  animation: popupAnim .5s ease;
-
-  box-shadow:
-    0 20px 50px rgba(214,51,132,0.2);
+    animation: popupShow .4s ease;
 }
 
-@keyframes popupAnim {
-  from {
-    transform: scale(.7);
-    opacity: 0;
-  }
+@keyframes popupShow {
+    from {
+        opacity: 0;
+        transform: scale(.8);
+    }
 
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .popup-box h2 {
-  color: #d63384;
-
-  font-size: 2rem;
-
-  margin-bottom: 25px;
+    color: #d63384;
+    margin-bottom: 20px;
 }
 
 .popup-box p {
-  color: #7a2c55;
-
-  line-height: 2;
-
-  font-size: 1.05rem;
-
-  margin-bottom: 30px;
+    line-height: 1.9;
+    color: #555;
 }
-
-/* CLOSE */
 
 #closeBtn {
-  position: absolute;
-
-  top: 15px;
-  right: 22px;
-
-  font-size: 30px;
-
-  cursor: pointer;
-
-  color: #d63384;
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+    color: #d63384;
 }
 
-/* MOBILE */
+/* Mobile */
 
 @media (max-width: 768px) {
 
-  .container {
-    padding: 45px 25px;
-  }
+    .container {
+        padding: 35px 20px;
+    }
 
-  .typing {
-    font-size: 2rem;
-  }
+    .typing {
+        font-size: 2rem;
+    }
 
-  .subtitle {
-    font-size: 1rem;
-  }
+    .subtitle {
+        font-size: .95rem;
+    }
 
-  .popup-box {
-    padding: 30px 22px;
-  }
+    .popup-box {
+        padding: 30px 20px;
+    }
 
-  .popup-box h2 {
-    font-size: 1.5rem;
-  }
-
-  .popup-box p {
-    font-size: .95rem;
-  }
-
-  .flower-bg span {
-    font-size: 1.5rem;
-  }
-
-}
-
-@media (max-width: 480px) {
-
-  .typing {
-    font-size: 1.6rem;
-  }
-
-  button {
-    width: 100%;
-    padding: 16px;
-  }
-
+    button {
+        width: 100%;
+    }
 }
